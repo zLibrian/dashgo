@@ -1,18 +1,22 @@
-import './globals.css'
+'use client';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+import { Roboto } from '@next/font/google';
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from './styles/theme';
+
+type RootLayoutProps = {
+  children: React.ReactNode;
+};
+
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] });
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body className={roboto.className}>
+        <ChakraProvider theme={theme}>{children}</ChakraProvider>
+      </body>
     </html>
-  )
+  );
 }
