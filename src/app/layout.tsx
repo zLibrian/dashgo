@@ -1,8 +1,5 @@
-'use client';
-
 import { Roboto } from '@next/font/google';
-import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from './styles/theme';
+import { Chakra } from '@/context/chakra';
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -15,7 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <head />
       <body className={roboto.className}>
-        <ChakraProvider theme={theme}>{children}</ChakraProvider>
+        <Chakra>{children}</Chakra>
       </body>
     </html>
   );
