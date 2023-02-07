@@ -1,14 +1,23 @@
 'use client';
 
-import { Flex } from '@chakra-ui/react';
+import { Flex, Button, Stack, FormControl } from '@chakra-ui/react';
+
+import { Form } from '@/components/Form';
+import { Input } from '@/components/Form/Input';
 
 export default function Home() {
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
-      Welcome
-      <Flex as="form" w="100%" maxW="360px">
-        Now chakra-ui is working
-      </Flex>
+      <Form>
+        <Stack spacing="4">
+          <Input label="Email:" name="email" type="email" />
+          <Input label="Password:" name="password" type="password" />
+        </Stack>
+
+        <Button type="submit" mt="6" colorScheme="pink" size="lg">
+          Login
+        </Button>
+      </Form>
     </Flex>
   );
 }
