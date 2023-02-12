@@ -9,16 +9,7 @@ import {
 
 export function Header() {
   return (
-    <Flex
-      as="header"
-      w="100%"
-      maxWidth={1480}
-      h="20"
-      mx="auto"
-      mt="4"
-      px="6"
-      align="center"
-    >
+    <Flex as="header" w="100%" h="20" mt="4" px="6" align="center">
       <Text fontSize="3xl" fontWeight="bold" letterSpacing="tight" w="64">
         Dashgo
         <Text as="span" color="pink.500" ml="1">
@@ -31,16 +22,14 @@ export function Header() {
         py="4"
         px="8"
         ml="6"
-        maxWidth={400}
-        alignSelf="center"
+        maxWidth={450}
         color="gray.200"
-        position="relative"
         bg="gray.800"
         borderRadius="full"
       >
         <Input
           color="gray.50"
-          px="4"
+          px="2"
           mr="4"
           placeholder="Buscar na plataforma"
           _placeholder={{ color: 'gray.400' }}
@@ -57,11 +46,11 @@ export function Header() {
           py="1"
           color="gray.300"
           borderRightWidth={1}
+          fontSize="20"
           borderColor="gray.700"
         >
-          <Icon as={RiNotificationLine} fontSize="20" />
-
-          <Icon as={RiUserAddLine} fontSize="20" />
+          <Icon as={RiNotificationLine} />
+          <Icon as={RiUserAddLine} />
         </HStack>
 
         <Flex align="center">
