@@ -21,7 +21,7 @@ import Pagination from '@/components/Pagination';
 
 export default function Users() {
   return (
-    <Box flex="1" borderRadius="8" bg="gray.800" p="8">
+    <>
       <Flex mb="8" justify="space-between" align="center">
         <Heading size="lg" fontWeight="normal">
           Usuários
@@ -78,6 +78,6 @@ export default function Users() {
         </Tbody>
       </Table>
       <Pagination />
-    </Box>
+    </>
   );
 }
