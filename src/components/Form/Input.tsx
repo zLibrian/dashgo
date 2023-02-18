@@ -1,10 +1,14 @@
 import { FormLabel, Input as ChakraInput, InputProps } from '@chakra-ui/react';
+import { forwardRef, ForwardRefRenderFunction } from 'react';
 
 type CustomInputProps = InputProps & {
   label?: string;
 };
 
-export const Input = (props: CustomInputProps) => {
+const BaseInput: ForwardRefRenderFunction<
+  HTMLInputElement,
+  CustomInputProps
+> = (props: CustomInputProps, ref) => {
   return (
     <FormLabel w="full" htmlFor={props.id || props.name}>
       {props.label}
@@ -18,8 +22,13 @@ export const Input = (props: CustomInputProps) => {
         }}
         size="lg"
         fontSize="medium"
+        ref={ref}
         {...props}
       />
     </FormLabel>
   );
 };
+
+const Input = forwardRef(BaseInput);
+
+export { Input };
