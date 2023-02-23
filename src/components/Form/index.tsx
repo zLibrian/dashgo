@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@chakra-ui/react';
+import { Box, FlexProps } from '@chakra-ui/react';
 
 type FormProps = FlexProps & {
   children: React.ReactNode;
@@ -6,17 +6,8 @@ type FormProps = FlexProps & {
 
 export const Form = (props: FormProps) => {
   return (
-    <Flex
-      as="form"
-      w="100%"
-      maxW="360px"
-      bg="gray.800"
-      p="8"
-      borderRadius={8}
-      flexDir="column"
-      {...props}
-    >
+    <Box as="form" bg="gray.800" p="8" borderRadius={8} {...props}>
       {props.children}
-    </Flex>
+    </Box>
   );
 };
