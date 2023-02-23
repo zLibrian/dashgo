@@ -2,36 +2,36 @@
 
 import { Flex, Button, Stack } from '@chakra-ui/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Form } from '@/components/Form';
 import { Input } from '@/components/Form/Input';
-
-const signInFormSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address' }),
-  password: z
-    .string()
-    .min(8, { message: 'Password must be at least 8 characters' }),
-});
-
-type SignInFormData = z.infer<typeof signInFormSchema>;
+import { SignInFormData, signInFormSchema } from '@/schemas/loginSchema';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const { push } = useRouter();
+
   const { register, handleSubmit, formState } = useForm<SignInFormData>({
     resolver: zodResolver(signInFormSchema),
   });
 
-  const { errors } = formState;
+  const { errors, isSubmitting } = formState;
 
   const handleSignIn: SubmitHandler<SignInFormData> = (data, e) => {
     e?.preventDefault();
-    console.log(data);
+
+    push('/dashboard');
   };
 
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
-      <Form onSubmit={handleSubmit(handleSignIn)}>
+      <Form
+        display="flex"
+        flexDir="column"
+        maxWidth="360px"
+        onSubmit={handleSubmit(handleSignIn)}
+      >
         <Stack spacing="4">
           <Input
             label="Email:"
@@ -52,11 +52,7 @@ export default function Home() {
           mt="6"
           colorScheme="pink"
           size="lg"
-          isDisabled={!formState.isValid}
-          _disabled={{
-            filter: 'brightness(0.7)',
-            cursor: 'not-allowed',
-          }}
+          isLoading={isSubmitting}
         >
           Login
         </Button>
