@@ -1,5 +1,7 @@
 import { Roboto } from '@next/font/google';
+
 import { Chakra } from '@/context/chakra';
+import { SidebarDrawerProvider } from '@/context/SidebarDrawerContext';
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -12,7 +14,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <head />
       <body className={roboto.className}>
-        <Chakra>{children}</Chakra>
+        <Chakra>
+          <SidebarDrawerProvider>{children}</SidebarDrawerProvider>
+        </Chakra>
       </body>
     </html>
   );
